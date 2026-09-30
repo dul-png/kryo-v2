@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stonebridge Contracting | Building & General Contracting in Melbourne</title>
+  <meta name="description" content="Stonebridge Contracting: premier building and general contracting across Greater Melbourne. Renovations, repairs, commercial fit-outs, plastering, painting and outdoor structures.">
+  <link rel="icon" href="assets/stonebridge-logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="is-loading">
+
+  <!-- Preloader: the logo mark draws itself -->
+  <div class="preloader" aria-hidden="true">
+    <svg class="preloader__mark" viewBox="0 0 120 100">
+      <use href="#mark-outline"/>
+    </svg>
+    <div class="preloader__bar"><span></span></div>
+  </div>
+
+  <!-- Reusable SVG symbols -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="mark" viewBox="0 0 120 100">
+        <path d="M24 90V52h14V14h24v76z"/>
+        <path d="M64 90V26h18v18h16v46z"/>
+        <rect x="10" y="91" width="100" height="2.5"/>
+        <path fill="var(--beige)" d="M67 90V67l11-10 11 10v23h-5V73H72v17z"/>
+        <path fill="var(--beige)" d="M42 18h1.4v72H42z"/>
+        <g fill="var(--beige)"><rect x="38.5" y="22" width="2.5" height="1.2"/><rect x="38.5" y="28" width="3.5" height="1.2"/><rect x="38.5" y="34" width="2.5" height="1.2"/><rect x="38.5" y="40" width="3.5" height="1.2"/><rect x="38.5" y="46" width="2.5" height="1.2"/><rect x="38.5" y="52" width="3.5" height="1.2"/><rect x="38.5" y="58" width="2.5" height="1.2"/><rect x="38.5" y="64" width="3.5" height="1.2"/><rect x="38.5" y="70" width="2.5" height="1.2"/><rect x="38.5" y="76" width="3.5" height="1.2"/><rect x="38.5" y="82" width="2.5" height="1.2"/></g>
+      </symbol>
+      <symbol id="mark-outline" viewBox="0 0 120 100">
+        <path d="M24 90V52h14V14h24v76"/>
+        <path d="M64 90V26h18v18h16v46"/>
+        <path d="M67 90V67l11-10 11 10v23"/>
+        <path d="M72 90V73h12v17"/>
+        <path d="M10 92h100"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Header -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="brand" aria-label="Stonebridge Contracting home">
+        <svg class="brand__mark"><use href="#mark"/></svg>
+        <span class="brand__text">
+          <strong>Stonebridge</strong>
+          <small>Contracting</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#why">Why Us</a>
+        <a href="#process">Process</a>
+        <a href="#areas">Service Areas</a>
+        <a href="#quote" class="btn btn--small">Get a Quote</a>
+      </nav>
+      <button class="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__skyline" aria-hidden="true">
+        <span style="--h:38%;--d:.1s"></span><span style="--h:62%;--d:.25s"></span><span style="--h:48%;--d:.2s"></span>
+        <span style="--h:80%;--d:.4s"></span><span style="--h:55%;--d:.3s"></span><span style="--h:70%;--d:.5s"></span>
+        <span style="--h:42%;--d:.35s"></span><span style="--h:90%;--d:.6s"></span><span style="--h:58%;--d:.45s"></span>
+        <span style="--h:35%;--d:.15s"></span><span style="--h:66%;--d:.55s"></span><span style="--h:46%;--d:.3s"></span>
+      </div>
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="eyebrow hero-anim" style="--i:0"><span class="eyebrow__line"></span> Servicing all of Greater Melbourne</p>
+          <h1 class="hero__title">
+            <span class="line"><span class="hero-word" style="--i:1">Built on</span></span>
+            <span class="line"><span class="hero-word" style="--i:2">quality.</span></span>
+            <span class="line"><span class="hero-word hero-word--muted" style="--i:3">Finished with</span></span>
+            <span class="line"><span class="hero-word hero-word--muted" style="--i:4">care.</span></span>
+          </h1>
+          <p class="hero__lead hero-anim" style="--i:5">Premier building and general contracting for homes and businesses — renovations, repairs, fit-outs and outdoor structures delivered with clear communication, transparent pricing and punctual service.</p>
+          <div class="hero__ctas hero-anim" style="--i:6">
+            <a href="#quote" class="btn">Request a Free Quote <span class="btn__arrow">→</span></a>
+            <a href="#services" class="btn btn--ghost">Explore Services</a>
+          </div>
+        </div>
+        <div class="hero__visual hero-anim" style="--i:4">
+          <div class="blueprint">
+            <svg viewBox="0 0 120 100" class="blueprint__draw"><use href="#mark-outline"/></svg>
+            <svg viewBox="0 0 120 100" class="blueprint__fill"><use href="#mark"/></svg>
+            <div class="blueprint__tag blueprint__tag--a"><strong>100%</strong> Fully insured</div>
+            <div class="blueprint__tag blueprint__tag--b"><strong>Fixed</strong> Transparent quotes</div>
+          </div>
+        </div>
+      </div>
+      <a href="#services" class="scroll-cue" aria-label="Scroll to services"><span></span></a>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Renovations</span><i>◆</i><span>Carpentry</span><i>◆</i><span>Commercial Fit-Outs</span><i>◆</i><span>Plastering</span><i>◆</i><span>Painting</span><i>◆</i><span>Decking</span><i>◆</i><span>Pergolas</span><i>◆</i><span>Retaining Walls</span><i>◆</i>
+        <span>Renovations</span><i>◆</i><span>Carpentry</span><i>◆</i><span>Commercial Fit-Outs</span><i>◆</i><span>Plastering</span><i>◆</i><span>Painting</span><i>◆</i><span>Decking</span><i>◆</i><span>Pergolas</span><i>◆</i><span>Retaining Walls</span><i>◆</i>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow"><span class="eyebrow__line"></span> What we do</p>
+          <h2>Complete contracting solutions, <em>big or small.</em></h2>
+          <p class="section__lead">From a single repair to a full commercial fit-out, one reliable team manages the job from concept to clean-up.</p>
+        </div>
+
+        <div class="services">
+          <article class="service reveal" style="--delay:0s">
+            <div class="service__num">01</div>
+            <div class="service__icon">
+              <svg viewBox="0 0 48 48"><path d="M6 22 24 8l18 14"/><path d="M10 19v21h28V19"/><path d="M20 40V28h8v12"/></svg>
+            </div>
+            <h3>Home Renovations &amp; Upgrades</h3>
+            <p>Bathrooms, kitchens, structural alterations and full-home refreshes designed around how you live.</p>
+            <ul><li>Kitchens</li><li>Bathrooms</li><li>Structural</li></ul>
+          </article>
+          <article class="service reveal" style="--delay:.1s">
+            <div class="service__num">02</div>
+            <div class="service__icon">
+              <svg viewBox="0 0 48 48"><path d="M8 40 28 20"/><path d="m24 16 8-8 8 8-8 8z"/><path d="M6 42l4-4"/></svg>
+            </div>
+            <h3>General Repairs &amp; Carpentry</h3>
+            <p>Framework, decking, doors, locks, shelving and general maintenance handled promptly and properly.</p>
+            <ul><li>Framing</li><li>Decking</li><li>Doors &amp; Locks</li></ul>
+          </article>
+          <article class="service reveal" style="--delay:.2s">
+            <div class="service__num">03</div>
+            <div class="service__icon">
+              <svg viewBox="0 0 48 48"><rect x="8" y="6" width="32" height="36"/><path d="M8 18h32M8 30h32M24 18v24"/></svg>
+            </div>
+            <h3>Commercial &amp; Office Fit-Outs</h3>
+            <p>Partitions, layout reconfigurations and retail upgrades delivered with minimal disruption to trade.</p>
+            <ul><li>Partitions</li><li>Offices</li><li>Retail</li></ul>
+          </article>
+          <article class="service reveal" style="--delay:0s">
+            <div class="service__num">04</div>
+            <div class="service__icon">
+              <svg viewBox="0 0 48 48"><rect x="8" y="6" width="28" height="12" rx="2"/><path d="M36 12h4v10H24v6"/><rect x="21" y="28" width="6" height="14" rx="1"/></svg>
+            </div>
+            <h3>Plastering, Painting &amp; Finishing</h3>
+            <p>High-grade interior and exterior surface finishing that looks sharp and lasts for years.</p>
+            <ul><li>Plastering</li><li>Interior</li><li>Exterior</li></ul>
+          </article>
+          <article class="service reveal" style="--delay:.1s">
+            <div class="service__num">05</div>
+            <div class="service__icon">
+              <svg viewBox="0 0 48 48"><path d="M4 18h40M8 18v24M40 18v24M4 12l20-6 20 6"/><path d="M16 42V30M24 42V30M32 42V30M12 30h24"/></svg>
+            </div>
+            <h3>Outdoor &amp; Landscape Structures</h3>
+            <p>Pergolas, fencing, retaining walls and outdoor living spaces built to handle Melbourne weather.</p>
+            <ul><li>Pergolas</li><li>Fencing</li><li>Retaining</li></ul>
+          </article>
+          <article class="service service--cta reveal" style="--delay:.2s">
+            <h3>Have something else in mind?</h3>
+            <p>Tell us about your project and we'll let you know how we can help.</p>
+            <a href="#quote" class="btn btn--light">Discuss Your Project <span class="btn__arrow">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="container stats__grid">
+        <div class="stat reveal" style="--delay:0s"><strong><span data-count="100">0</span>%</strong><span>Qualified &amp; insured trades</span></div>
+        <div class="stat reveal" style="--delay:.1s"><strong><span data-count="31">0</span></strong><span>Councils across Greater Melbourne</span></div>
+        <div class="stat reveal" style="--delay:.2s"><strong><span data-count="5">0</span></strong><span>Core service specialties</span></div>
+        <div class="stat reveal" style="--delay:.3s"><strong><span data-count="0">0</span></strong><span>Hidden costs. Ever.</span></div>
+      </div>
+    </section>
+
+    <!-- Why -->
+    <section class="section section--alt" id="why">
+      <div class="container why">
+        <div class="why__intro reveal-left">
+          <p class="eyebrow"><span class="eyebrow__line"></span> Why Stonebridge</p>
+          <h2>Structural integrity in <em>everything we do.</em></h2>
+          <p class="section__lead">We take pride in turning your concept into reality. That means doing the work properly, telling you exactly what it costs, and turning up when we say we will.</p>
+          <a href="#quote" class="btn">Start Your Project <span class="btn__arrow">→</span></a>
+        </div>
+        <div class="why__list">
+          <div class="feature reveal-right" style="--delay:0s">
+            <div class="feature__icon"><svg viewBox="0 0 48 48"><path d="M24 4c-8 0-14 6-14 14 0 11 14 26 14 26s14-15 14-26c0-8-6-14-14-14z"/><circle cx="24" cy="18" r="5"/></svg></div>
+            <div><h3>Melbourne-Wide Coverage</h3><p>No matter where you are, from the CBD to the outer suburbs, we come to you.</p></div>
+          </div>
+          <div class="feature reveal-right" style="--delay:.1s">
+            <div class="feature__icon"><svg viewBox="0 0 48 48"><path d="M24 4 8 10v12c0 10 7 18 16 22 9-4 16-12 16-22V10z"/><path d="m17 24 5 5 9-10"/></svg></div>
+            <div><h3>Qualified &amp; Fully Insured</h3><p>Complete peace of mind with insured, skilled tradespeople on every job.</p></div>
+          </div>
+          <div class="feature reveal-right" style="--delay:.2s">
+            <div class="feature__icon"><svg viewBox="0 0 48 48"><rect x="10" y="4" width="28" height="40" rx="2"/><path d="M16 14h16M16 22h16M16 30h10"/></svg></div>
+            <div><h3>Transparent Quotes</h3><p>Fair pricing with detailed job breakdowns, and no hidden costs.</p></div>
+          </div>
+          <div class="feature reveal-right" style="--delay:.3s">
+            <div class="feature__icon"><svg viewBox="0 0 48 48"><path d="M8 40h32"/><path d="M14 40 20 8h8l6 32"/><path d="M17 24h14"/></svg></div>
+            <div><h3>Clean &amp; Professional</h3><p>We respect your property and leave every job site spotless.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <p class="eyebrow"><span class="eyebrow__line"></span> How it works <span class="eyebrow__line"></span></p>
+          <h2>From concept to <em>completion.</em></h2>
+        </div>
+        <div class="process-wrap">
+        <div class="process__rail" aria-hidden="true"><span></span></div>
+        <ol class="process">
+          <li class="step reveal" style="--delay:0s"><span class="step__dot">1</span><h3>Tell Us</h3><p>Post your task details or request a quote online.</p></li>
+          <li class="step reveal" style="--delay:.15s"><span class="step__dot">2</span><h3>Site Visit</h3><p>We assess the job and discuss your requirements.</p></li>
+          <li class="step reveal" style="--delay:.3s"><span class="step__dot">3</span><h3>Clear Quote</h3><p>A detailed, itemised quote with no surprises.</p></li>
+          <li class="step reveal" style="--delay:.45s"><span class="step__dot">4</span><h3>We Build</h3><p>Punctual, skilled work with regular updates.</p></li>
+          <li class="step reveal" style="--delay:.6s"><span class="step__dot">5</span><h3>Handover</h3><p>A final walkthrough and a spotless site.</p></li>
+        </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Areas -->
+    <section class="section section--dark" id="areas">
+      <div class="container areas">
+        <div class="reveal-left">
+          <p class="eyebrow eyebrow--light"><span class="eyebrow__line"></span> Service areas</p>
+          <h2>From the CBD to the <em>outer suburbs.</em></h2>
+          <p class="section__lead">Our team services the entire Greater Melbourne area. If you're in Melbourne, we come to you.</p>
+        </div>
+        <div class="regions">
+          <div class="region reveal" style="--delay:0s"><h3>Inner City</h3><p>CBD · Southbank · Docklands · Carlton · Fitzroy · Richmond</p></div>
+          <div class="region reveal" style="--delay:.1s"><h3>North</h3><p>Brunswick · Coburg · Preston · Reservoir · Epping · Craigieburn</p></div>
+          <div class="region reveal" style="--delay:.2s"><h3>East</h3><p>Box Hill · Doncaster · Ringwood · Glen Waverley · Croydon · Lilydale</p></div>
+          <div class="region reveal" style="--delay:.3s"><h3>South East</h3><p>St Kilda · Brighton · Moorabbin · Dandenong · Frankston · Berwick</p></div>
+          <div class="region reveal" style="--delay:.4s"><h3>West</h3><p>Footscray · Sunshine · Werribee · Point Cook · Melton · Caroline Springs</p></div>
+          <div class="region reveal" style="--delay:.5s"><h3>Outer Suburbs</h3><p>Mornington · Yarra Valley · Sunbury · Pakenham · and beyond</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="section" id="quote">
+      <div class="container quote">
+        <div class="quote__info reveal-left">
+          <p class="eyebrow"><span class="eyebrow__line"></span> Get started</p>
+          <h2>Ready to get <em>started?</em></h2>
+          <p class="section__lead">Post your task details or request a quote below, and we'll be happy to discuss your project requirements.</p>
+          <ul class="quote__points">
+            <li>Free, no-obligation quotes</li>
+            <li>Detailed job breakdowns</li>
+            <li>Residential &amp; commercial</li>
+            <li>All of Greater Melbourne</li>
+          </ul>
+        </div>
+
+        <form class="form reveal-right" novalidate>
+          <div class="form__body">
+            <div class="form__row">
+              <div class="field">
+                <input id="name" name="name" type="text" placeholder=" " required autocomplete="name">
+                <label for="name">Full name</label>
+              </div>
+              <div class="field">
+                <input id="phone" name="phone" type="tel" placeholder=" " required autocomplete="tel">
+                <label for="phone">Phone</label>
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="field">
+                <input id="email" name="email" type="email" placeholder=" " required autocomplete="email">
+                <label for="email">Email</label>
+              </div>
+              <div class="field">
+                <input id="suburb" name="suburb" type="text" placeholder=" " required autocomplete="address-level2">
+                <label for="suburb">Suburb</label>
+              </div>
+            </div>
+            <fieldset class="chips">
+              <legend>Service needed</legend>
+              <label><input type="radio" name="service" value="Renovation" checked><span>Renovation</span></label>
+              <label><input type="radio" name="service" value="Repairs & Carpentry"><span>Repairs &amp; Carpentry</span></label>
+              <label><input type="radio" name="service" value="Commercial Fit-Out"><span>Commercial Fit-Out</span></label>
+              <label><input type="radio" name="service" value="Plaster & Paint"><span>Plaster &amp; Paint</span></label>
+              <label><input type="radio" name="service" value="Outdoor Structure"><span>Outdoor Structure</span></label>
+              <label><input type="radio" name="service" value="Other"><span>Other</span></label>
+            </fieldset>
+            <div class="field">
+              <textarea id="details" name="details" rows="4" placeholder=" " required></textarea>
+              <label for="details">Tell us about your project</label>
+            </div>
+            <button type="submit" class="btn btn--full">
+              <span class="btn__label">Request My Quote</span>
+              <span class="btn__spinner" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="form__success" role="status" aria-live="polite">
+            <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="m15 27 7 7 15-16"/></svg>
+            <h3>Thanks! Request received.</h3>
+            <p>We'll be in touch shortly to discuss your project.</p>
+            <button type="button" class="btn btn--ghost form__reset">Send another request</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/stonebridge-logo.jpg" alt="Stonebridge Contracting logo" width="140" height="140">
+        <p>Quality workmanship, structural integrity and reliability on every project across Greater Melbourne.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Renovations &amp; Upgrades</a></li>
+          <li><a href="#services">Repairs &amp; Carpentry</a></li>
+          <li><a href="#services">Commercial Fit-Outs</a></li>
+          <li><a href="#services">Plastering &amp; Painting</a></li>
+          <li><a href="#services">Outdoor Structures</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#why">Why Stonebridge</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#areas">Service Areas</a></li>
+          <li><a href="#quote">Request a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year"></span> Stonebridge Contracting. All rights reserved.</span>
+      <span>Greater Melbourne, VIC</span>
+    </div>
+  </footer>
+
+  <a href="#top" class="to-top" aria-label="Back to top">↑</a>
+
+  <script src="script.js"></script>
+</body>
+</html>
