@@ -1,6 +1,12 @@
 (() => {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const TRADES = window.TRADES || [];
+  const ICONS = window.TRADE_ICONS || {};
+
+  // "Trades under one roof" stat follows the trade list
+  const tradeCount = $('[data-trade-count]');
+  if (tradeCount && TRADES.length) tradeCount.dataset.count = TRADES.filter(t => !t.other).length;
 
   /* Preloader → trigger hero entrance */
   const finishLoading = () => {
@@ -111,6 +117,173 @@
     blueprint.style.transition = 'transform .6s cubic-bezier(.22,.9,.28,1)';
   }
 
+  /* Trade Explorer */
+  const explorer = $('.explorer');
+  const tradeSelect = $('#trade');
+  if (explorer && TRADES.length) {
+    const list = $('.explorer__list', explorer);
+    const filters = $('.explorer__filters', explorer);
+    const search = $('.explorer__search input', explorer);
+    const empty = $('.explorer__empty', explorer);
+    const inner = $('.explorer__inner', explorer);
+    const iconBox = $('.explorer__icon', explorer);
+    const cta = $('.explorer__cta', explorer);
+    let category = 'All';
+    let query = '';
+    let current = 0;
+    let visible = [];
+    let swapTimer;
+
+    const esc = (str) => str.replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+    const highlight = (name) => {
+      if (!query) return esc(name);
+      const i = name.toLowerCase().indexOf(query);
+      if (i < 0) return esc(name);
+      return esc(name.slice(0, i)) + '<mark>' + esc(name.slice(i, i + query.length)) + '</mark>' + esc(name.slice(i + query.length));
+    };
+    const matches = (t) => (category === 'All' || t.cat === category) &&
+      (!query || [t.name, t.cat, t.summary, ...t.covers].join(' ').toLowerCase().includes(query));
+
+    window.TRADE_CATEGORIES.forEach(cat => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = cat;
+      b.setAttribute('aria-pressed', cat === category);
+      b.addEventListener('click', () => {
+        category = cat;
+        $$('button', filters).forEach(x => x.setAttribute('aria-pressed', x === b));
+        renderList(true);
+      });
+      filters.appendChild(b);
+    });
+
+    function renderList(autoSelect) {
+      visible = TRADES.map((t, i) => i).filter(i => matches(TRADES[i]));
+      empty.hidden = visible.length > 0;
+      if (autoSelect && visible.length && !visible.includes(current)) show(visible[0]);
+      list.innerHTML = '';
+      visible.forEach((i, n) => {
+        const t = TRADES[i];
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'trade-tab';
+        b.id = `trade-tab-${i}`;
+        b.dataset.index = i;
+        b.style.setProperty('--i', n);
+        b.setAttribute('role', 'tab');
+        b.setAttribute('aria-controls', 'trade-panel');
+        b.innerHTML = `<svg viewBox="0 0 48 48" aria-hidden="true">${ICONS[t.icon] || ''}</svg><span>${highlight(t.name)}</span><span class="trade-tab__arrow" aria-hidden="true">→</span>`;
+        b.addEventListener('click', () => show(i));
+        list.appendChild(b);
+      });
+      syncTabs();
+    }
+
+    function syncTabs() {
+      const tabs = $$('.trade-tab', list);
+      tabs.forEach(tab => {
+        const on = +tab.dataset.index === current;
+        tab.setAttribute('aria-selected', on);
+        tab.tabIndex = on ? 0 : -1;
+      });
+      if (tabs.length && !tabs.some(t => t.tabIndex === 0)) tabs[0].tabIndex = 0;
+      const active = $(`#trade-tab-${current}`, list);
+      if (active) {
+        $('#trade-panel').setAttribute('aria-labelledby', active.id);
+        list.scrollTo({
+          left: active.offsetLeft - (list.clientWidth - active.offsetWidth) / 2,
+          top: active.offsetTop - (list.clientHeight - active.offsetHeight) / 2,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function fill(t) {
+      $('svg', iconBox).innerHTML = ICONS[t.icon] || '';
+      iconBox.style.animation = 'none';
+      void iconBox.offsetWidth;
+      iconBox.style.animation = '';
+      $('.explorer__cat', explorer).textContent = t.cat;
+      $('.explorer__title', explorer).textContent = t.name;
+      $('.explorer__summary', explorer).textContent = t.summary;
+      $('.explorer__covers', explorer).innerHTML = t.covers.map((c, i) => `<li style="--i:${i}">${esc(c)}</li>`).join('');
+      $('.explorer__standard', explorer).innerHTML = t.standard
+        .map(([title, text], i) => `<li style="--i:${i}"><strong>${esc(title)}</strong><span>${esc(text)}</span></li>`).join('');
+      cta.firstChild.textContent = t.other ? 'Ask about your trade ' : `Get a quote for ${t.name.split(' & ')[0]} `;
+    }
+
+    function show(i, instant) {
+      if (i === current && !instant) return;
+      current = i;
+      syncTabs();
+      clearTimeout(swapTimer);
+      if (instant) { fill(TRADES[i]); return; }
+      inner.classList.add('is-out');
+      swapTimer = setTimeout(() => {
+        fill(TRADES[i]);
+        inner.classList.remove('is-out');
+      }, 260);
+    }
+
+    list.addEventListener('keydown', (e) => {
+      const tabs = $$('.trade-tab', list);
+      const pos = tabs.indexOf(document.activeElement);
+      if (pos < 0) return;
+      const moves = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1, Home: -Infinity, End: Infinity };
+      if (!(e.key in moves)) return;
+      e.preventDefault();
+      const step = moves[e.key];
+      const next = step === -Infinity ? 0 : step === Infinity ? tabs.length - 1 : (pos + step + tabs.length) % tabs.length;
+      tabs[next].focus();
+      show(+tabs[next].dataset.index);
+    });
+
+    $('.explorer__next', explorer).addEventListener('click', () => {
+      const pool = visible.length ? visible : TRADES.map((t, i) => i);
+      const pos = pool.indexOf(current);
+      show(pool[(pos + 1) % pool.length]);
+    });
+
+    let searchTimer;
+    search.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        query = search.value.trim().toLowerCase();
+        renderList(true);
+      }, 120);
+    });
+
+    cta.addEventListener('click', () => {
+      if (!tradeSelect) return;
+      const t = TRADES[current];
+      tradeSelect.value = t.other ? 'Other specialist / niche trade' : t.name;
+      const field = tradeSelect.closest('.field');
+      field.classList.remove('is-invalid', 'flash');
+      void field.offsetWidth;
+      field.classList.add('flash');
+    });
+
+    renderList();
+    show(0, true);
+  }
+
+  /* Populate the quote form's trade dropdown, grouped by category */
+  if (tradeSelect && TRADES.length) {
+    window.TRADE_CATEGORIES.slice(1).forEach(cat => {
+      const group = document.createElement('optgroup');
+      group.label = cat;
+      TRADES.filter(t => t.cat === cat).forEach(t => {
+        const o = document.createElement('option');
+        o.value = o.textContent = t.other ? 'Other specialist / niche trade' : t.name;
+        group.appendChild(o);
+      });
+      tradeSelect.appendChild(group);
+    });
+    const unsure = document.createElement('option');
+    unsure.value = unsure.textContent = 'Not sure / multiple trades';
+    tradeSelect.appendChild(unsure);
+  }
+
   /* Quote form: client-side validation + success animation */
   const form = $('.form');
   const validators = {
@@ -123,9 +296,10 @@
     input.closest('.field').classList.toggle('is-invalid', !ok);
     return ok;
   };
-  $$('.field input, .field textarea', form).forEach(input => {
+  $$('.field input, .field textarea, .field select', form).forEach(input => {
     input.addEventListener('blur', () => { if (input.value) checkField(input); });
     input.addEventListener('input', () => input.closest('.field').classList.remove('is-invalid'));
+    input.addEventListener('change', () => input.closest('.field').classList.remove('is-invalid'));
   });
   form.addEventListener('submit', (e) => {
     e.preventDefault();
